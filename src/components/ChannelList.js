@@ -3,7 +3,9 @@ import React from 'react';
 class ChannelList extends React.Component {
 	render() {
 		return (
-			<h1>Channel List Component</h1>
+			<div className="rooms-list">
+				<div className="help-text">Channel List Component</div>
+			</div>
 		)
 	}
 }
