@@ -1,3 +1,6 @@
+/* ff7c00 orange */
+/* 575758 grey */
+
 :root {
   --main-color: #5ea3d0;
   --secondary-color: white;
@@ -5,9 +8,6 @@
   --secondary-text-color: #b0c7d6;
   --send-message-form: #F5F5F5;
 }
-
-/* ff7c00 orange */
-/* 575758 grey */
 
 html, body {
   height: 100%;
