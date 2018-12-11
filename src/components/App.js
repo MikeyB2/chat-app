@@ -8,6 +8,12 @@ import NewChannelForm from './NewChannelForm';
 import { tokenUrl, instanceLocator } from '../config';
 
 class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      messages: []
+    }
+  }
   componentDidMount() {
     const chatManager = new Chatkit.ChatManager({
       instanceLocator,
@@ -16,13 +22,16 @@ class App extends React.Component {
         url: tokenUrl
       })
     })
+
     chatManager.connect()
       .then(currentUser => {
         currentUser.subscribeToRoom({
           roomId: '19375563',
           hooks: {
             onNewMessage: message => {
-              console.log('message.text: ', message.text);
+              this.setState({
+                messages: [...this.state.messages, message]//... spread operator to take existing messages and make them individual messages when new message is added instead of making them all 1 item
+              })
             }
           }
         })
@@ -33,7 +42,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <ChannelList />
-        <MessageList />
+        <MessageList messages={this.state.messages} />
         <SendMessageForm />
         <NewChannelForm />
       </div>
